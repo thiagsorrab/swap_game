@@ -22,6 +22,7 @@ class CreateUsuariosTable extends Migration
             $table->char('tipo',1);
             $table->string('email');            
             $table->string('senha');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

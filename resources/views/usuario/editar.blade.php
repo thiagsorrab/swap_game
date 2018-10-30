@@ -43,18 +43,18 @@
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                         @if($usuario->genero == "Masculino")
-                                        <input type="radio" class="form-check-input" name="genero" value="Masculino" checked="true">Masculino
+                                            <input type="radio" class="form-check-input" name="genero" value="Masculino" checked="true">Masculino
                                         @else
-                                        <input type="radio" class="form-check-input" name="genero" value="Masculino">Masculino
+                                            <input type="radio" class="form-check-input" name="genero" value="Masculino">Masculino
                                         @endif
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                         @if($usuario->genero == "Feminino")
-                                        <input type="radio" class="form-check-input" name="genero" value="Feminino" checked="true">Feminino
+                                            <input type="radio" class="form-check-input" name="genero" value="Feminino" checked="true">Feminino
                                         @else
-                                        <input type="radio" class="form-check-input" name="genero" value="Feminino">Feminino
+                                            <input type="radio" class="form-check-input" name="genero" value="Feminino">Feminino
                                         @endif
                                     </label>
                                 </div>
@@ -74,8 +74,24 @@
                             <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $usuario->tipo }}" required autofocus>
-
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        @if($usuario->tipo == "0")
+                                            <input type="radio" class="form-check-input" name="tipo" value="0" checked="true">Admin
+                                        @else
+                                            <input type="radio" class="form-check-input" name="tipo" value="0">Admin
+                                        @endif
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        @if($usuario->tipo == "1")
+                                            <input type="radio" class="form-check-input" name="tipo" value="1" checked="true">Usuario
+                                        @else
+                                            <input type="radio" class="form-check-input" name="tipo" value="1">Usuario
+                                        @endif
+                                    </label>
+                                </div>
                             </div>
                         </div>
 

@@ -64,8 +64,16 @@
                             <label for="tipo" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="tipo" type="text" class="form-control" name="tipo"  required autofocus>
-
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="tipo" value="0">Admin
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="tipo" value="1">Usuario
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -86,7 +94,7 @@
 
                             </div>
                         </div>
-
+                        <!--
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Senha') }}</label>
 
@@ -94,7 +102,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
+                        -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

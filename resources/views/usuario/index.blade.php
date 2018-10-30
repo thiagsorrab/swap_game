@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
 <div class="container">
@@ -19,7 +19,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <!--<th>#</th>-->
                                 <th>Nome</th>
                                 <th>Data Nascimento</th>
                                 <th>Genero</th>
@@ -31,15 +31,15 @@
                         <tbody>
                             @foreach($usuarios as $usuario)
                                 <tr>
-                                    <th scope="row">{{ $usuario->id }}</th>
+                                    <!--<th scope="row">{{ $usuario->id }}</th>-->
                                     <td>{{ $usuario->nome }}</td>
                                     <td>{{ $usuario->data_nascimento }}</td>
                                     <td>{{ $usuario->genero }}</td>
                                     <td>{{ $usuario->telefone }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
-                                    <a class="btn btn-default" href="{{ route('usuario.editar', $usuario->id) }}">Editar</a>
-                                    <a class="btn btn-danger" href="#">Deletar</a>
+                                    <a href="{{ route('usuario.editar', $usuario->id) }}"><i class="fas fa-user-edit"></i></a>
+                                    <a href="javascript:(confirm('Deletar esse Registro?') ? window.location.href='{{route('usuario.deletar', $usuario->id)}}' : false)"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>                            
                             @endforeach
