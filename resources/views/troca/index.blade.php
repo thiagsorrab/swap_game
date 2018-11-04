@@ -84,7 +84,7 @@
 
 			<h2>Avaliações</h2>
 			<h5>do  {{ $jogo1->usuario->nome }}</h5>
-			<h3>Média: {{ number_format($avaliacoes->media, 2) }}</h3>
+			<h3>Média: {{ number_format($avaliacoes->media, 2)  }}</h3>
 			
 			<span class="nota" style="background-position:{{$avaliacoes->tamanhoestrela}}px 0; margin-bottom: 20px; ">
 				<i>
@@ -103,7 +103,7 @@
 
 						<div class="comment-text" style="margin-left: 0px;">
 							<span class="username">
-								{{ $avaliacao->usuarioAvaliador->nome }}
+								{{ $avaliacao->usuarioAvaliador->nome }} <span class="text-muted">Nota {{$avaliacao->nota}}</span>
 								<span class="text-muted pull-right">{{ $avaliacao->updated_at->format('d M Y H:i:s') }}</span>
 							</span><!-- /.username -->
 							{{ $avaliacao->avaliacao_user  }}
