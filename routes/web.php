@@ -110,6 +110,20 @@ Route::middleware(['auth'])->group(function(){
 	//Rota para Recusar a troca.
 	Route::put('/troca/recusa/{id}', ['uses'=>'TrocaController@recusa', 'as'=>'troca.recusa']);
 
+	//Rota para chat
+	Route::get('/troca/chat/{id}', ['uses'=>'ChatController@chat', 'as'=>'chat.chat']);
+
+	//Rota para enviar mensagem
+	Route::post('/chat/enviar', ['uses'=>'ChatController@enviarmsg', 'as'=>'chat.enviar']);
+
+	//Rota para tela de avaliacao
+	Route::get('/avaliar/troca/{id}', ['uses'=>'AvaliacaoController@index', 'as'=>'avaliacao.index']);
+
+	//Rota para tela de avaliacao
+	Route::post('/avaliar/salvar', ['uses'=>'AvaliacaoController@salvar', 'as'=>'avaliacao.salvar']);
+
+	Route::put('/avaliar/atualizar/{id}', ['uses'=>'AvaliacaoController@atualizar', 'as'=>'avaliacao.atualizar']);
+
 });
 
 

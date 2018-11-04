@@ -35,4 +35,14 @@ class Troca extends Model
     public function jogo2(){
     	return $this->belongsTo('App\Jogo', 'jogo_id2');
     }
+
+    //Uma troca tem um Chat
+    public function chat(){
+        return $this->belongsTo('App\Chat', 'troca_id');
+    }
+
+    //Uma troca tem uma avaliação
+    public function avaliacao(){
+        return $this->belongsTo('App\Avaliacao', 'troca_id');
+    }
 }

@@ -41,7 +41,81 @@
 			<button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#modal-default">
                 <span class="glyphicon glyphicon-refresh"></span>  Trocar
             </button>
-			<a href="#" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
+
+            <style>
+
+				.nota{ /* elemento que terá todas as estrelas dentro*/
+				display:block; /* usar inline-block pra exibir na mesma linha*/
+				width:130px; /*definindo largura do elemento (soma da largura das 5 estrelas)*/
+				height:21px; /* definindo altura do elemento, altura de apenas uma estrela*/
+				background: #ccc url({{ asset('admintemplate/dist/img/bar.png') }}) repeat-y; /* definindo que a estrela apagada tem a cor #76003A e a estrela acesa tem a linha como imagem de fundo repetida na vertical até o fim do elemento*/
+				}
+
+				/*.nota:hover{ /* quando o mouse estiver sobre o elemento, todas estrelas "acenderão"*
+				background-position:0px 0px !important;
+				}*/
+
+				.nota i{ /* este elemento terá a mesma largura e altura do seu pai(.nota), com uma diferença na imagem de fundo*/
+				display: block;
+				width: 130px;
+				height: 100%;
+				background: url({{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}) repeat-x; /* este elemento tem as molduras das estrelas, repetindo-se horizontalmente*/
+				}
+
+				/* Se parássemos o código nesse ponto, teríamos a avaliação atual e ao passar o mouse sobre qualquer estrela, todas as outras acenderiam... */
+
+				.nota a:link{ /* este será um "link invisível", que detectara o mouse*/
+				display:block;
+				float:left;
+				width:20%;
+				opacity:0; /* esta linha que faz o link e seu conteúdo não aparecer, porém ele continua existindo e pode ser clicado...*/
+				}
+
+				.nota img{ /* dentro de cada link invisível há uma imagem de moldura de estrela, com o fundo apagado*/
+				width:100%;
+				height:auto;
+				background:#ccc; /* esta cor de background é a cor da estrela com fundo apagado*/
+				}
+
+				/*.nota>i>a:hover ~ a:link{
+				opacity:1;
+				}*/
+			</style>
+
+			<h2>Avaliações</h2>
+			<h5>do  {{ $jogo1->usuario->nome }}</h5>
+			<h3>Média: {{ number_format($avaliacoes->media, 2) }}</h3>
+			
+			<span class="nota" style="background-position:{{$avaliacoes->tamanhoestrela}}px 0; margin-bottom: 20px; ">
+				<i>
+					<a href="#"><img src="{{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}"></a>
+					<a href="#"><img src="{{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}"></a>
+					<a href="#"><img src="{{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}"></a>
+					<a href="#"><img src="{{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}"></a>
+					<a href="#"><img src="{{ asset('admintemplate/dist/img/moldura_estrela_b.png') }}"></a>
+				</i>
+			</span>
+			<div class="box-footer box-comments">
+			@foreach($avaliacoes as $avaliacao)
+
+				
+					<div class="box-comment">					
+
+						<div class="comment-text" style="margin-left: 0px;">
+							<span class="username">
+								{{ $avaliacao->usuarioAvaliador->nome }}
+								<span class="text-muted pull-right">{{ $avaliacao->updated_at->format('d M Y H:i:s') }}</span>
+							</span><!-- /.username -->
+							{{ $avaliacao->avaliacao_user  }}
+						</div>
+						<!-- /.comment-text -->
+					</div>					
+				
+
+				<!-- /.box-footer -->
+
+			@endforeach
+			</div>
 
 			<div class="modal fade" id="modal-default">
 				<div class="modal-dialog">

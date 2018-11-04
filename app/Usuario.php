@@ -39,4 +39,15 @@ class Usuario extends Authenticatable
     public function troca2(){
         return $this->hasMany('App\Troca', 'usuario_id2');
     }
+
+    //Uma Avaliacao tem um usuario Avaliado
+    public function Avaliacao(){
+        return $this->hasMany('App\Avaliacao', 'usuario_id_avaliado');
+    }
+
+    //Uma Avaliacao tem um usuario Avaliador
+    public function Avaliador(){
+        return $this->hasMany('App\Avaliacao', 'usuario_id_avaliador');
+    }
+
 }

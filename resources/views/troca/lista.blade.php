@@ -66,10 +66,16 @@
 								<button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#modal-default{{ $tr->id }}">
 									<span class="glyphicon glyphicon-refresh"></span>  Trocar
 								</button>
-								<a href="#" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
+								<a href="{{ route('chat.chat',$tr->id) }}" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
+								
 							@else
+								<a href="{{ route('avaliacao.index',$tr->id) }}" type="button" class="btn btn-block btn-success" ">
+									<span class="fa fa-fw fa-star"></span>  Avaliar
+								</a>
+								<a href="{{ route('chat.chat',$tr->id) }}" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
 								<b>Troca Finalizada</b>
 							@endif
+							
 						</div>
 						<hr>
 						<div class="modal fade" id="modal-default{{ $tr->id }}">
@@ -158,7 +164,18 @@
 							<button type="button" class="btn btn-block  @if ($ts->status == 'Aguardando') disabled btn-warning @endif" data-toggle="modal" data-target="#modal-default">
 								<span class="glyphicon glyphicon-refresh"></span>  {{ $ts->status }}
 							</button>
-							<a href="#" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
+
+							@if ($ts->status == 'Finalizado')
+								<a href="{{ route('avaliacao.index',$ts->id) }}" type="button" class="btn btn-block btn-success" ">
+									<span class="fa fa-fw fa-star"></span>  Avaliar
+								</a>
+							@endif
+
+							@if ($ts->status == 'Recusado')
+
+							@else
+								<a href="{{ route('chat.chat',$ts->id) }}" type="button" class="btn btn-block btn-primary"><i class="fa fa-fw fa-wechat"></i>  Chat</a>
+							@endif
 
 						</div>
 						<hr>

@@ -12,17 +12,28 @@ use Illuminate\Support\Facades\Auth;
 use App\Jogo;
 use App\Usuario;
 use App\Troca;
+use App\Avaliacao;
 
 class TrocaController extends Controller
 {   
     //Função abre a tela do jogo para inicar a troca
     public function index($id){
 
-    	$jogo1 = Jogo::find($id);
+    	$jogo1 = Jogo::find($id);        
 
     	$seusjogos = Jogo::where('usuario_id', Auth::user()->id)->paginate(15);
+
+        $avaliacoes = Avaliacao::where('usuario_id_avaliado', $jogo1->usuario->id)->paginate(15);
+
+        $avaliacoes->media = $avaliacoes->avg('nota');
+
+        $porcentagemestrela = 1 - ($avaliacoes->media/5);
+
+        $avaliacoes->tamanhoestrela = (130 * $porcentagemestrela) * -1;
+
+        //dd($avaliacoes);
     	
-        return view('troca.index', compact('jogo1', 'seusjogos'));
+        return view('troca.index', compact('jogo1', 'seusjogos', 'avaliacoes'));
 
     }
 
